@@ -13,10 +13,6 @@ int money=0;
 int money2=0;
 int incercare =0;
 
-ifstream citire_id("id_b.in");
-ifstream citire_pin("pin_b.in");
-ofstream inregistrareid("id_b.in");
-ofstream inregistrarepin("pin_b.in");
 
 int logare()
 {
@@ -25,9 +21,10 @@ int logare()
     cout<<"========================================================="<<endl;
     cout<<"                                Incercari ramase:"<<3-incercare<<endl;
     int cardid, pin, pin_b, id_b;
-    citire_id>>id_b;
-    citire_pin>>pin_b;
-
+    ifstream citire_id("id_b.in");
+    ifstream citire_pin("pin_b.in");
+  
+    
      if(incercare == 3)
     {
         cout<<"[SYSTEM]Ai introdus datele gresite de 3 ori, programul se va inchide!";
@@ -36,25 +33,25 @@ int logare()
 
     cout<<"Introduceti id-ul cardului: "<<endl;
     cin>>cardid;
+    citire_id>>id_b;
     if(cardid>999999 || cardid<=100000)
     {
         system("CLS");
-        cout<<"[EROARE]Id-ul cardului tau trebuie sa contina 6 cifre!"<<endl;
-        incercare++;
-        return logare();
+        //cout<<"[EROARE]Id-ul cardului tau trebuie sa contina 6 cifre!"<<endl;
     }
 
     cout<<"Introduceti pin-ul cardului: "<<endl;
     cin>>pin;
+    citire_pin>>pin_b;
     if(pin>9999 || pin<=1000)
     {
         system("CLS");
-        cout<<"[EROARE]Codul pin trebuie sa contina 4 cifre!"<<endl;
-        incercare++;
-        return logare();
+        //cout<<"[EROARE]Codul pin trebuie sa contina 4 cifre!"<<endl;
     }
     if(id_b == cardid && pin_b == pin)
     {
+        citire_id>>id_b;
+        citire_pin>>pin_b;
         system("CLS");
         logat = 1;
         cout<<"[SYSTEM]Te-ai autentificat cu succes!"<<endl;
@@ -65,6 +62,7 @@ int logare()
     {
         cout<<"[Eroare]: Ai introdus un id sau un pin gresit!";
         incercare++;
+        logare();
 
     }
     if(logat == 1)
@@ -77,10 +75,13 @@ int logare()
 
 int inregistrare()
 {
+    ofstream inregistrareid("id_b.in");
+    ofstream inregistrarepin("pin_b.in");
     cout<<"Pentru a te inregistra este nevoie sa introduci un pin format din 6 cifre\n";
     int register_id, register_pin;
     cout<<"Card id:";
      cin>>register_id;
+
     if(register_id < 100000 || register_id > 999999)
     {
         system("CLS");
@@ -88,6 +89,7 @@ int inregistrare()
         return inregistrare();
     }
     inregistrareid<<register_id;
+
     cout<<"[Register]Acum trebuie sa-ti alegi un pin format din 4 cifre!\n";
     cout<<"Card pin: ";
      cin>>register_pin;
