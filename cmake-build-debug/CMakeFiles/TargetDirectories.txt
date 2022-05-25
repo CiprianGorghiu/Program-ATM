@@ -1,0 +1,3 @@
+D:/proiect/Algoritmi Fundamentali/atmlogare/cmake-build-debug/CMakeFiles/atmlogare.dir
+D:/proiect/Algoritmi Fundamentali/atmlogare/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/proiect/Algoritmi Fundamentali/atmlogare/cmake-build-debug/CMakeFiles/rebuild_cache.dir

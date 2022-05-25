@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1652342993 source:d:\proiect\algoritmi fundamentali\atmlogare\main.cpp
+	<iostream>
+	<fstream>
+
