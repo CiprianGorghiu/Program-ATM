@@ -24,7 +24,6 @@ int logare()
     ifstream citire_id("id_b.in");
     ifstream citire_pin("pin_b.in");
   
-    
      if(incercare == 3)
     {
         cout<<"[SYSTEM]Ai introdus datele gresite de 3 ori, programul se va inchide!";
@@ -34,20 +33,12 @@ int logare()
     cout<<"Introduceti id-ul cardului: "<<endl;
     cin>>cardid;
     citire_id>>id_b;
-    if(cardid>999999 || cardid<=100000)
+    if((cardid>999999 || cardid<=100000) || (pin>9999 || pin<=1000))
     {
-        system("CLS");
-        //cout<<"[EROARE]Id-ul cardului tau trebuie sa contina 6 cifre!"<<endl;
-    }
-
     cout<<"Introduceti pin-ul cardului: "<<endl;
     cin>>pin;
     citire_pin>>pin_b;
-    if(pin>9999 || pin<=1000)
-    {
-        system("CLS");
-        //cout<<"[EROARE]Codul pin trebuie sa contina 4 cifre!"<<endl;
-    }
+  }
     if(id_b == cardid && pin_b == pin)
     {
         citire_id>>id_b;
@@ -60,7 +51,9 @@ int logare()
     }
     else
     {
-        cout<<"[Eroare]: Ai introdus un id sau un pin gresit!";
+        system("CLS");
+        cout<<"[Eroare]: Ai introdus un id sau un pin gresit!"<<endl;
+        cout<<endl;
         incercare++;
         logare();
 
@@ -236,7 +229,7 @@ int meniu(int money, int cardid)
         case 3: interogare(money, cardid);
             break;
         case 4: cout<<"Ati iesit din meniu!"<<endl;
-            return 0;
+            exit(0);
 
         default: cout<<"Apasa o tasta intre 1 si 4"<<endl;
     }
